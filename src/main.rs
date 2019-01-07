@@ -27,10 +27,10 @@ fn main() {
     match off_today_events {
         Err(e) => panic!("{}", e),
         Ok(es) => {
-            let empty = es.len() > 0;
+            let not_empty = es.len() > 0;
             let names = es.into_iter().map(|e| e.name).collect::<Vec<String>>();
-            println!("Today is {}off{}", if empty { "" } else { "NOT " }, if empty { format!(": {:?}", names.join(", ")) } else { String::from("") });
-            if empty {
+            println!("Today is {}off{}", if not_empty { "" } else { "NOT " }, if not_empty { format!(": {:?}", names.join(", ")) } else { String::from("") });
+            if not_empty {
                 update_slack_status(&today);
             }
         },
