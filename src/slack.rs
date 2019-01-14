@@ -1,4 +1,5 @@
 use chrono::{DateTime, Utc};
+use serde_json::json;
 
 pub fn set_status(token: &str, status_text: &str, status_emoji: &str, status_expiration: Option<DateTime<Utc>>) -> Result<slack_api::users_profile::SetResponse, slack_api::users_profile::SetError<slack_api::requests::Error>> {
     let client = slack_api::default_client().unwrap();

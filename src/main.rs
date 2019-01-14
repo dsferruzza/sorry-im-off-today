@@ -1,14 +1,6 @@
-extern crate chrono;
-extern crate ical;
-extern crate regex;
-extern crate reqwest;
-extern crate slack_api;
-
-#[macro_use]
-extern crate serde_json;
-
 mod calendar;
 mod slack;
+
 use chrono::{DateTime, Local, Utc};
 use regex::Regex;
 
