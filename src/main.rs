@@ -19,7 +19,7 @@ fn main() {
     let off_regex = Regex::new(r"^(Congés|Absent)").unwrap();
 
     let url = std::env::var("CALENDAR_URL").expect("Env variable 'CALENDAR_URL' not set.");
-    let calendar = calendar::get_calendar(url);
+    let calendar = calendar::get_calendar(&url);
     let events = calendar.map(|c| calendar::calendar_to_events(&c));
     let today_events = events.map(|es| calendar::get_today_events(&es, today));
     let off_today_events = today_events.map(|es| calendar::get_off_events(&es, &off_regex));
@@ -27,7 +27,7 @@ fn main() {
     match off_today_events {
         Err(e) => panic!("{}", e),
         Ok(es) => {
-            let not_empty = es.len() > 0;
+            let not_empty = !es.is_empty();
             let names = es.into_iter().map(|e| e.name).collect::<Vec<String>>();
             println!("Today is {}off{}", if not_empty { "" } else { "NOT " }, if not_empty { format!(": {:?}", names.join(", ")) } else { String::from("") });
             if not_empty {
