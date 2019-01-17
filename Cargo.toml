@@ -1,8 +1,17 @@
 [package]
 name = "sorry-im-off-today"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["David Sferruzza <david.sferruzza@gmail.com>"]
 edition = "2018"
+description = "Automatically update your Slack status if your Google Calendar says that you are off today"
+repository = "https://gitlab.com/dsferruzza/sorry-im-off-today"
+readme = "README.md"
+categories = ["command-line-utilities"]
+keywords = ["google-calendar", "slack"]
+license = "MIT"
+
+[badges]
+gitlab = { repository = "dsferruzza/sorry-im-off-today", branch = "master" }
 
 [dependencies]
 chrono = "0.4"

@@ -1,9 +1,11 @@
 # Sorry I'm Off Today
 
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![pipeline status](https://gitlab.com/dsferruzza/sorry-im-off-today/badges/master/pipeline.svg)](https://gitlab.com/dsferruzza/sorry-im-off-today/commits/master)
+[![Crates.io Version](https://img.shields.io/crates/v/sorry-im-off-today.svg)](https://crates.io/crates/sorry-im-off-today)
 [![Get help on Codementor](https://cdn.codementor.io/badges/get_help_github.svg)](https://www.codementor.io/dsferruzza?utm_source=github&utm_medium=button&utm_term=dsferruzza&utm_campaign=github)
 
-Automatically update your Slack status if your calendar says that you are off today.
+Automatically update your Slack status if your Google Calendar says that you are off today.
 
 ⚠️ _Main repository is here: https://gitlab.com/dsferruzza/sorry-im-off-today_ ⚠️
 
