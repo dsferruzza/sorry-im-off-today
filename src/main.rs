@@ -21,11 +21,19 @@ fn main() {
         Ok(es) => {
             let not_empty = !es.is_empty();
             let names = es.into_iter().map(|e| e.name).collect::<Vec<String>>();
-            println!("Today is {}off{}", if not_empty { "" } else { "NOT " }, if not_empty { format!(": {:?}", names.join(", ")) } else { String::from("") });
+            println!(
+                "Today is {}off{}",
+                if not_empty { "" } else { "NOT " },
+                if not_empty {
+                    format!(": {:?}", names.join(", "))
+                } else {
+                    String::from("")
+                }
+            );
             if not_empty {
                 update_slack_status(&today);
             }
-        },
+        }
     }
 }
 
@@ -36,7 +44,11 @@ fn update_slack_status(today: &DateTime<Utc>) {
     let emoji = ":palm_tree:";
 
     let token = std::env::var("SLACK_API_TOKEN").expect("Env variable 'SLACK_API_TOKEN' not set.");
-    let timeout = today.date().with_timezone(&Local).and_hms(23, 59, 59).with_timezone(&Utc);
+    let timeout = today
+        .date()
+        .with_timezone(&Local)
+        .and_hms(23, 59, 59)
+        .with_timezone(&Utc);
     slack::set_status(&token, status, emoji, Some(timeout)).unwrap();
 
     println!("Done!");
