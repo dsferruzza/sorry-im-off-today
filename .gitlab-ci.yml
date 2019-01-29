@@ -1,6 +1,6 @@
 variables:
   DEBIAN_FRONTEND: noninteractive
-  RUST_VERSION: "1.31"
+  RUST_VERSION: "1.32"
 
 build:
   stage: build
