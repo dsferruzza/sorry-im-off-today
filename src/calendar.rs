@@ -2,6 +2,7 @@ use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use ical::parser::ical::component::{IcalCalendar, IcalEvent};
 use regex::Regex;
 
+#[allow(clippy::redundant_closure)]
 pub fn get_calendar(url: &str) -> Result<IcalCalendar, String> {
     let body = reqwest::get(url)
         .and_then(|r| r.error_for_status())
@@ -53,14 +54,14 @@ fn parse_event(event: &IcalEvent) -> Option<Event> {
             .find(|p| p.name == "DTSTART")
             .and_then(|p| p.clone().value)
             .as_ref()
-            .map(|v| v.as_str())
+            .map(std::string::String::as_str)
             .and_then(parse_date);
         let end = props
             .clone()
             .find(|p| p.name == "DTEND")
             .and_then(|p| p.clone().value)
             .as_ref()
-            .map(|v| v.as_str())
+            .map(std::string::String::as_str)
             .and_then(parse_date);
         match (name, start, end) {
             (Some(n), Some(s), Some(e)) => Some(Event {
