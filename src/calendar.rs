@@ -2,9 +2,8 @@ use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime, Utc};
 use ical::parser::ical::component::{IcalCalendar, IcalEvent};
 use regex::Regex;
 
-#[allow(clippy::redundant_closure)]
 pub fn get_calendar(url: &str) -> Result<IcalCalendar, String> {
-    let body = reqwest::get(url)
+    let body = reqwest::blocking::get(url)
         .and_then(|r| r.error_for_status())
         .map_err(|e| {
             format!(

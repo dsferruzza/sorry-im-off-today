@@ -28,7 +28,7 @@ pub fn set_status(
     slack_api::users_profile::set(&client, &token, &set_request)
 }
 
-fn test_auth(token: &str, client: &slack_api::requests::Client) {
+fn test_auth(token: &str, client: &reqwest::blocking::Client) {
     let auth_test =
         slack_api::auth::test(client, &token).expect("The provided Slack API token doesn't work.");
     println!(
