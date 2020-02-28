@@ -829,7 +829,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "sorry-im-off-today"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "chrono 0.4.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "ical 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",

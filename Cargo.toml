@@ -1,6 +1,6 @@
 [package]
 name = "sorry-im-off-today"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["David Sferruzza <david.sferruzza@gmail.com>"]
 edition = "2018"
 description = "Automatically update your Slack status if your Google Calendar says that you are off today"
