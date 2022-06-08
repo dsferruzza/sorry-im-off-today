@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Update dependencies
+
 ## 1.0.2
 
 - Update dependencies
