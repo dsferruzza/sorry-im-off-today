@@ -25,11 +25,11 @@ pub fn set_status(
         value: None,
     };
     println!("[Slack] Set status to: {}", new_profile_str);
-    slack_api::sync::users_profile::set(&client, &token, &set_request)
+    slack_api::sync::users_profile::set(&client, token, &set_request)
 }
 
 fn test_auth(token: &str, client: &reqwest::blocking::Client) {
-    let auth_test = slack_api::sync::auth::test(client, &token)
+    let auth_test = slack_api::sync::auth::test(client, token)
         .expect("The provided Slack API token doesn't work.");
     println!(
         "[Slack] Authenticated in {} ({}) as {} ({})",

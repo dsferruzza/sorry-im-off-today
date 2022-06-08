@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Update dependencies
+- Update to Rust 2021 Edition
 
 ## 1.0.2
 

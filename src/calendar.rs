@@ -8,7 +8,7 @@ pub fn get_calendar(url: &str) -> Result<IcalCalendar, String> {
         .map_err(|e| {
             format!(
                 "Error fetching calendar: \"{}\"",
-                display_http_error(&e, &url)
+                display_http_error(&e, url)
             )
         })?
         .text()
@@ -52,15 +52,13 @@ fn parse_event(event: &IcalEvent) -> Option<Event> {
             .clone()
             .find(|p| p.name == "DTSTART")
             .and_then(|p| p.clone().value)
-            .as_ref()
-            .map(std::string::String::as_str)
+            .as_deref()
             .and_then(parse_date);
         let end = props
             .clone()
             .find(|p| p.name == "DTEND")
             .and_then(|p| p.clone().value)
-            .as_ref()
-            .map(std::string::String::as_str)
+            .as_deref()
             .and_then(parse_date);
         match (name, start, end) {
             (Some(n), Some(s), Some(e)) => Some(Event {
@@ -80,11 +78,11 @@ fn parse_date(date: &str) -> Option<DateTime<Utc>> {
     let format2 = "%Y-%m-%dT%H%M%SZ";
     let format3 = "%Y%m%dT%H%M%S";
     let format4 = "%Y%m%d";
-    let parsed_date = NaiveDateTime::parse_from_str(date, &format)
-        .or_else(|_e| NaiveDateTime::parse_from_str(date, &format2))
-        .or_else(|_e| NaiveDateTime::parse_from_str(date, &format3))
+    let parsed_date = NaiveDateTime::parse_from_str(date, format)
+        .or_else(|_e| NaiveDateTime::parse_from_str(date, format2))
+        .or_else(|_e| NaiveDateTime::parse_from_str(date, format3))
         .or_else(|_e| {
-            NaiveDate::parse_from_str(date, &format4)
+            NaiveDate::parse_from_str(date, format4)
                 .map(|nd| nd.and_time(NaiveTime::from_hms(0, 0, 0)))
         })
         .map(|d| DateTime::from_utc(d, Utc));
