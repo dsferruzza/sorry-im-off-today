@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.3
 
 - Update dependencies
 - Update to Rust 2021 Edition
